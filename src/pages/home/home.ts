@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
-import { TabsPage } from '../tabs/tabs';
 
 @IonicPage({
   priority: 'high',
@@ -18,9 +17,9 @@ export class HomePage {
   constructor(public navCtrl: NavController) { }
   login() {
     console.log(this.username + " - " + this.password);
-    if(this.username == 'projeto' && this.password == '123')
+    if(this.username == 'projeto' && this.password == '123'){
       this.navCtrl.parent.select(3);
-    else
+    }else
       alert('Senha ou usuário inválidos');    
   }
   goRegister() {

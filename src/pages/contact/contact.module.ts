@@ -10,4 +10,4 @@ import { ContactPage } from './contact';
     IonicPageModule.forChild(ContactPage),
   ],
 })
-export class GraphicsPageModule {}
+export class ContactPageModule {}
