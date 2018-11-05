@@ -23,12 +23,8 @@ export class RegisterPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
+  register(){
+    if(this.username.length==0 || this.password.length==0 || this.repassword.length==0)
+     alert("Por favor complete os campos");
   }
- register(){
- if(this.username.length==0 || this.password.length==0 || this.repassword.length==0){
-  alert("Por favor complete os campos")
-  }
- }
 }
