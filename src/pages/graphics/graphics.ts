@@ -10,24 +10,16 @@ import { Chart } from 'chart.js';
 })
 export class GraphicsPage {
 
-  
   @ViewChild('doughnutCanvas') doughnutCanvas;
-  
 
-  
   doughnutChart: any;
-  
 
   constructor(public navCtrl: NavController) {
 
   }
 
   ionViewDidLoad() {
-
-    
-
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-
       type: 'doughnut',
       data: {
         labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
@@ -52,12 +44,7 @@ export class GraphicsPage {
           ]
         }]
       }
-
     });
-
-    
-
   }
-
 
 }

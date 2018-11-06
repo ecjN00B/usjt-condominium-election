@@ -14,8 +14,4 @@ export class CandidatesProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CandidatesProfilePage');
-  }
-
 }
