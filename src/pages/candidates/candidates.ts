@@ -6,10 +6,10 @@ import { NavController, IonicPage } from 'ionic-angular';
 })
 
 @Component({
-  selector: 'page-contact',
-  templateUrl: 'contact.html'
+  selector: 'page-candidates',
+  templateUrl: 'candidates.html'
 })
-export class ContactPage {
+export class CandidatesPage {
 
   constructor(public navCtrl: NavController) {
 

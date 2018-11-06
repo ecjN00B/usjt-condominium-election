@@ -14,7 +14,7 @@ export class TabsPage {
 
   home = 'HomePage';
   about = 'AboutPage';
-  contact = 'ContactPage';
+  candidates = 'CandidatesPage';
   graphics = 'GraphicsPage';
 
   constructor() {
