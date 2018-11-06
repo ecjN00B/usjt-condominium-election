@@ -12,7 +12,11 @@ import { NavController, IonicPage } from 'ionic-angular';
 export class CandidatesPage {
 
   constructor(public navCtrl: NavController) {
+    
+  }
 
+  viewProfile(){
+    this.navCtrl.push('CandidatesProfilePage');
   }
 
 }
