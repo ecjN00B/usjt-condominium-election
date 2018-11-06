@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, AlertController } from 'ionic-angular';
+import { NavController, IonicPage, AlertController, LoadingController } from 'ionic-angular';
 
 @IonicPage({
   priority: 'high'
@@ -11,25 +11,41 @@ import { NavController, IonicPage, AlertController } from 'ionic-angular';
 })
 
 export class LoginPage {
+  
   username: string;
   password: string;
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController) { }
 
-  login() {
-    console.log(this.username + " - " + this.password);
-    if(this.username == 'projeto' && this.password == '123')
-      this.navCtrl.setRoot('TabsPage');
-    else
-      this.showAlert('Falha ao autenticar', 'Usuário ou Senha incorreto');   
+  loader:any = this.createLoader();
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController) { }
+
+  login() {    
+    this.loader ? this.loader.present().then(()=> {
+      if(this.username == 'projeto' && this.password == '123'){
+        this.navCtrl.setRoot('TabsPage');
+      }else{
+        if(this.loader){ 
+          this.loader.dismiss();
+          this.loader = this.createLoader();
+        }
+        this.showAlert('Falha ao autenticar', 'Usuário ou Senha incorreto');
+      }
+    }) : this.loader = this.createLoader();
   }
 
   showAlert(title, message) {
-    const alert = this.alertCtrl.create({
+    this.alertCtrl.create({
       title: title,
       subTitle: message,
       buttons: ['OK']
+    }).present();
+  }
+
+  createLoader() {
+    return this.loadingCtrl.create({
+      content: "Please wait...",
+      dismissOnPageChange: true
     });
-    alert.present();
   }
 
   goRegister() {
