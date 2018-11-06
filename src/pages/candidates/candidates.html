@@ -7,38 +7,42 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item (click)="viewProfile()">
-        <img width="20" height="20" src="../assets/imgs/author.jpg" />
-      Candidato 1
-    </ion-item>
-    <ion-item>
-        <ion-icon ios="ios-contacts" name="person"></ion-icon>
-        Candidato 2
-    </ion-item>
-    <ion-item>
-        <ion-icon ios="ios-contacts" name="person"></ion-icon>
-        Candidato 3
-    </ion-item>
-    <ion-item>
-        <ion-icon ios="ios-contacts" name="person"></ion-icon>
-        Candidato 4
-    </ion-item>
-    <ion-item>
-        <ion-icon ios="ios-contacts" name="person"></ion-icon>
-        Candidato 5
-    </ion-item>
-    <ion-item>
-        <ion-icon ios="ios-contacts" name="person"></ion-icon>
-        Candidato 6
-    </ion-item>
-    <ion-item>
-        <ion-icon ios="ios-contacts" name="person"></ion-icon>
-        Candidato 7
-    </ion-item>
-    <ion-item>
-        <ion-icon ios="ios-contacts" name="person"></ion-icon>
-        Candidato 8
-    </ion-item>
-  </ion-list>
+    <ion-card>
+        <ion-card-header>
+          Search your candidate
+        </ion-card-header>
+      
+        <ion-list>
+          <button ion-item (click)="viewProfile()">
+            <ion-icon name="cart" item-start></ion-icon>
+            Shopping
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="medical" item-start></ion-icon>
+            Hospital
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="cafe" item-start></ion-icon>
+            Cafe
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="paw" item-start></ion-icon>
+            Dog Park
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="beer" item-start></ion-icon>
+            Pub
+          </button>
+      
+          <button ion-item>
+            <ion-icon name="planet" item-start></ion-icon>
+            Space
+          </button>
+      
+        </ion-list>
+      </ion-card>
 </ion-content>
