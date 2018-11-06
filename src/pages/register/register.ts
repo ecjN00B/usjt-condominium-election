@@ -9,7 +9,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  */
 
 @IonicPage({
-  // defaultHistory: ['HomePage']
+  defaultHistory: ['LoginPage']
 })
 
 @Component({
