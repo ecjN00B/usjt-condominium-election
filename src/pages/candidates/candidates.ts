@@ -12,7 +12,7 @@ import { NavController, IonicPage } from 'ionic-angular';
 export class CandidatesPage {
 
   searchQuery: string = '';
-  candidates: string[];
+  candidates: Array<Object>;
 
   constructor(public navCtrl: NavController) {
     this.initializeCandidates();
@@ -20,11 +20,26 @@ export class CandidatesPage {
 
   initializeCandidates() {
     this.candidates = [
-      'N00B',
-      'Candidato 1',
-      'Candidato 2',
-      'Candidato 3',
-      'Candidato 4'
+      {
+        'name':'N00B',
+        'sigla':'#000',
+        'description': 'Taxation is theft'
+      },
+      {
+        'name':'Candidato 1',
+        'sigla':'#001',
+        'description': 'Taxation is theft'
+      },
+      {
+        'name':'Candidato 2',
+        'sigla':'#002',
+        'description': 'Taxation is theft'
+      },
+      {
+        'name':'Candidato 3',
+        'sigla':'#003',
+        'description': 'Taxation is theft'
+      }
     ];
   }
 
@@ -38,7 +53,7 @@ export class CandidatesPage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.candidates = this.candidates.filter((candidate) => {
-        return (candidate.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (candidate.name.toLowerCase().indexOf(val.toLowerCase()) > -1) || (candidate.sigla.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
   }
