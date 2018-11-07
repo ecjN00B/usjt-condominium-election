@@ -12,7 +12,7 @@ import { NavController, IonicPage } from 'ionic-angular';
 export class CandidatesPage {
 
   searchQuery: string = '';
-  candidates: Array<Object>;
+  candidates: Array<any>;
 
   constructor(public navCtrl: NavController) {
     this.initializeCandidates();
