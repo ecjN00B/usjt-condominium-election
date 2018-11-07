@@ -8,45 +8,16 @@
 
 <ion-content>
     <ion-card>
-        <ion-card-header>
-          Find your candidate
-        </ion-card-header>
-      
+        <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
         <ion-list>
-          <button ion-item (click)="viewProfile()">  
+          <button ion-item *ngFor="let candidate of candidates" (click)="viewProfile()">  
             <ion-avatar item-start>
                 <img src="../assets/imgs/author.jpg" />  
             </ion-avatar>
-            <h2>N00B</h2>
+            <h2>{{ candidate }}</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam tempor pulvinar nulla nec sagittis. Nullam tortor elit, feugiat id erat.</p>
             <ion-note item-end>#000</ion-note>
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="medical" item-start></ion-icon>
-            Hospital
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="cafe" item-start></ion-icon>
-            Cafe
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="paw" item-start></ion-icon>
-            Dog Park
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="beer" item-start></ion-icon>
-            Pub
-          </button>
-      
-          <button ion-item>
-            <ion-icon name="planet" item-start></ion-icon>
-            Space
-          </button>
-      
+          </button>      
         </ion-list>
       </ion-card>
 </ion-content>
