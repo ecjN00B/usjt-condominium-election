@@ -10,7 +10,7 @@
     <ion-card>
         <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
         <ion-list>
-          <button ion-item *ngFor="let candidate of candidates" (click)="viewProfile()">  
+          <button ion-item *ngFor="let candidate of candidates; let i = index" (click)="viewProfile(i)">  
             <ion-avatar item-start>
                 <img src="../assets/imgs/author.jpg" />  
             </ion-avatar>

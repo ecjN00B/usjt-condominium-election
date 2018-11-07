@@ -58,8 +58,8 @@ export class CandidatesPage {
     }
   }
 
-  viewProfile(){
-    this.navCtrl.push('CandidatesProfilePage');
+  viewProfile(i){
+    this.navCtrl.push('CandidatesProfilePage', this.candidates[i]);
   }
 
 }
