@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage({
-  defaultHistory: ['CandidatesPage']
+  defaultHistory: ['CandidatesPage'],
+  segment:'profile'
 })
 
 @Component({
