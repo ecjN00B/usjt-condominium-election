@@ -1,12 +1,7 @@
 .ios, .md {
  
     page-graphics {
-
-        ion-title *{
-            margin-top:30vh; 
-            margin-bottom:5vh;
-        }
- 
+         
         .scroll-content {
             background-color: map-get($colors, light);
         }

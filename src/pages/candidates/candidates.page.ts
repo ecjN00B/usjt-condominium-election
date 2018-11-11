@@ -9,6 +9,7 @@ import { NavController, IonicPage } from 'ionic-angular';
   selector: 'page-candidates',
   templateUrl: 'candidates.page.html'
 })
+
 export class CandidatesPage {
 
   searchQuery: string = '';
