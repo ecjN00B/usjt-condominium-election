@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @IonicPage({
   defaultHistory: ['LoginPage']
@@ -9,15 +10,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   selector: 'page-register',
   templateUrl: 'register.page.html',
 })
+
 export class RegisterPage {
-  username:string;
-  password:string;
-  repassword:string;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+  signupForm: FormGroup;
+
+  constructor(public formBuilder: FormBuilder, public navCtrl: NavController, public navParams: NavParams) {
+
+    this.signupForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      repassword: ['', [Validators.required, Validators.minLength(6)]],
+      apt: ['', Validators.required]
+    });
+
+
+
   }
 
-  register(){
-    if(this.username.length==0 || this.password.length==0 || this.repassword.length==0)
-     alert("Por favor complete os campos");
-  }
+ 
 }

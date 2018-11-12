@@ -8,25 +8,25 @@
 
 
 <ion-content padding>
-  <form (ngSubmit)="onSubmit()">
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit(); $event.preventDefault()">
     <ion-item>
       <ion-icon name="person" item-left></ion-icon>
-      <ion-input placeholder="Nome" type="text"> Login</ion-input>
+      <ion-input placeholder="Nome" type="text" formControlName="name"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="lock" item-left></ion-icon>
-      <ion-input placeholder="Senha" type="password"></ion-input>
+      <ion-input placeholder="Senha" type="password" formControlName="password"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="unlock" item-left></ion-icon>
-      <ion-input placeholder="Digite a senha novamente" type="password"></ion-input>
+      <ion-input placeholder="Digite a senha novamente" type="password" formControlName="repassword"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-icon name="at" item-left></ion-icon>
-      <ion-input placeholder="Numero do apt." type="text"></ion-input>
+      <ion-icon name="at" item-left></ion-icon>
+      <ion-input placeholder="Numero do apt." type="text" formControlName="apt"></ion-input>
     </ion-item>
     <br>
-    <button ion-button outline block type="submit">
+    <button ion-button outline block type="submit" [disabled]="signupForm.invalid">
       Registrar
     </button>
   </form>
