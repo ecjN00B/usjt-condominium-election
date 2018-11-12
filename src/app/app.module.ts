@@ -6,8 +6,6 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-// import { LocationStrategy, PathLocationStrategy } from '@angular/common';
-
 @NgModule({
   declarations: [
     MyApp
@@ -24,7 +22,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
-    // { provide: LocationStrategy, useClass: PathLocationStrategy }
   ]
 })
 export class AppModule {}
