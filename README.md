@@ -21,6 +21,8 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## Authors
 
 * **Elias de Carvalho Junior** - [ecjN00B](https://github.com/ecjN00B)
+* **Matheus Zaggia Franco** - [MatheusZaggia](https://github.com/MatheusZaggia)
+* **Walace Martins da Silva** - [walaceMartins](https://github.com/walaceMartins)
 
 See also the list of [contributors](https://github.com/ecjN00B/usjt-condominium-election/contributors) who participated in this project.
 
