@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, IonicPage, AlertController, LoadingController } from 'ionic-angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @IonicPage({
   priority: 'high'
@@ -17,11 +18,20 @@ export class LoginPage {
 
   loader:any = this.createLoader();
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController) { }
+  loginForm: FormGroup;
+
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public formBuilder: FormBuilder) {
+
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required, Validators.minLength(4)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+
+   }
 
   login() {    
     this.loader ? this.loader.present().then(()=> {
-      if(this.username == 'projeto' && this.password == '123'){
+      if(this.username == 'projeto' && this.password == '123456'){
         this.navCtrl.setRoot('TabsPage');
       }else{
         if(this.loader){ 

@@ -3,21 +3,23 @@
     <ion-avatar>
       <ion-icon name="contact"></ion-icon>
     </ion-avatar>
-    <ion-list>
-      <ion-item>
-        <ion-label stacked>Usuário</ion-label>
-        <ion-input [(ngModel)]="username"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label stacked>Senha</ion-label>
-        <ion-input type="password" [(ngModel)]="password"></ion-input>
-      </ion-item>
-    </ion-list>
-    <button ion-button outline icon-start (click)="login()">
-        Login
-    </button>
-    <button ion-button outline icon-end (click)="goRegister()">
-        Sign up
+    <form [formGroup]="loginForm" (ngSubmit)="login(); $event.preventDefault()">
+      <ion-list>
+        <ion-item>
+          <ion-label stacked>Usuário</ion-label>
+          <ion-input [(ngModel)]="username" formControlName="username"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="password" formControlName="password"></ion-input>
+        </ion-item>
+      </ion-list>
+      <button ion-button outline block type="submit" [disabled]="loginForm.invalid">
+          Login
       </button>
+      <button ion-button outline block (click)="goRegister()">
+          Sign up
+      </button>
+    </form>
   </ion-grid>
 </ion-content>
