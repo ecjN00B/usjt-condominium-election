@@ -7,7 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
-import { Environment } from '../models/environment';
+import { Environment } from '../models/environment.model';
 import { UserService } from '../providers/user/user.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 
