@@ -7,14 +7,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
+import { Environment } from '../models/environment';
+
+const environment = new Environment();
 
 const firebaseAppConfig: FirebaseAppConfig = {
-  apiKey: "AIzaSyCG5DzP_g7rjo_O15UDymcfv50YhwAJPkw",
-  authDomain: "ionic-condominium-election-app.firebaseapp.com",
-  databaseURL: "https://ionic-condominium-election-app.firebaseio.com",
-  projectId: "ionic-condominium-election-app",
-  storageBucket: "ionic-condominium-election-app.appspot.com",
-  messagingSenderId: "287146848223"
+  apiKey: environment.getApiKey(),
+  authDomain: environment.getAuthDomain(),
+  databaseURL: environment.getDatabaseUrl(),
+  projectId: environment.getProjectid(),
+  storageBucket: environment.getStorageBucket(),
+  messagingSenderId: environment.getMessagingSenderId()
 };
 
 @NgModule({
