@@ -8,6 +8,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 import { Environment } from '../models/environment';
+import { UserService } from '../providers/user/user.service';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 const environment = new Environment();
 
@@ -34,9 +36,11 @@ const firebaseAppConfig: FirebaseAppConfig = {
     MyApp
   ],
   providers: [
+    AngularFireDatabase,
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    UserService
   ]
 })
 export class AppModule {}

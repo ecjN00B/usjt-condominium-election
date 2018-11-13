@@ -8,6 +8,6 @@ import { RegisterPage } from './register.page';
   ],
   imports: [
     IonicPageModule.forChild(RegisterPage),
-  ],
+  ]
 })
 export class RegisterPageModule {}
