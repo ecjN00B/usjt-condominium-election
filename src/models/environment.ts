@@ -7,7 +7,7 @@ export class Environment {
     private databaseURL: string;
     private projectId: string;
     private storageBucket: string;
-    private messagingSenderId: number;
+    private messagingSenderId: string;
     
     constructor(){
         this.apiKey = data.process.env.apiKey;
@@ -38,7 +38,7 @@ export class Environment {
         return this.storageBucket;
     }
 
-    getMessagingSenderId():number {
+    getMessagingSenderId():string {
         return this.messagingSenderId;
     }
 

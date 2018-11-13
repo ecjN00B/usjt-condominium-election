@@ -1,1 +1,1 @@
-declare var process: { env: { [key:string]:any | undefined; } };
+declare var process: { env: { [key:string]:string | undefined; } };
