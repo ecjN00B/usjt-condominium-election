@@ -14,16 +14,20 @@
       <ion-input placeholder="Nome" type="text" formControlName="name"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-icon name="at" item-left></ion-icon>
+      <ion-input placeholder="Username" type="text" formControlName="username"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" item-left></ion-icon>
+      <ion-input placeholder="E-mail" type="email" formControlName="email" email></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-icon name="lock" item-left></ion-icon>
       <ion-input placeholder="Senha" type="password" formControlName="password"></ion-input>
     </ion-item>
     <ion-item>
       <ion-icon name="unlock" item-left></ion-icon>
       <ion-input placeholder="Digite a senha novamente" type="password" formControlName="repassword"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="at" item-left></ion-icon>
-      <ion-input placeholder="Numero do apt." type="text" formControlName="apt"></ion-input>
     </ion-item>
     <br>
     <button ion-button outline block type="submit" [disabled]="signupForm.invalid">

@@ -20,9 +20,10 @@ export class RegisterPage {
 
     this.signupForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
+      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      repassword: ['', [Validators.required, Validators.minLength(6)]],
-      apt: ['', Validators.required]
+      repassword: ['', [Validators.required, Validators.minLength(6)]]
     });
 
   }
