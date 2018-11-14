@@ -3,5 +3,9 @@
 </ion-header>
 
 <ion-content padding>
-  Home
+  <ion-list no-lines>
+      <button ion-item *ngFor="let user of users | async" (click)="onSelectUser(user)">
+        {{ user.name }}
+      </button>
+    </ion-list>
 </ion-content>
