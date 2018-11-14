@@ -29,4 +29,8 @@ export class HomePage {
 
   }
   
+  onSelectUser(user){
+    console.log(user);
+  }
+
 }

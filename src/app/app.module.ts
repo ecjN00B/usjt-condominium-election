@@ -6,10 +6,13 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
+
+import { AuthService } from '../providers/auth/auth.service';
 import { Environment } from '../models/environment.model';
 import { UserService } from '../providers/user/user.service';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 const environment = new Environment();
 
@@ -36,7 +39,9 @@ const firebaseAppConfig: FirebaseAppConfig = {
     MyApp
   ],
   providers: [
+    AngularFireAuth,
     AngularFireDatabase,
+    AuthService,
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },

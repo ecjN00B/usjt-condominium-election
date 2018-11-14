@@ -1,6 +1,6 @@
 export class User {
 
-    constructor(public name:string, public uid:string, public apt:string){
+    constructor(public name:string, public username:string, public email:string, public uid:string, public apt:string){
 
     }
 

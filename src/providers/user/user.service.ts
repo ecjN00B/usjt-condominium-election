@@ -13,9 +13,9 @@ export class UserService {
     this.users = db.list<User>(`/users`).valueChanges();
   }
 
-  create(user: User): any {
-    return this.db.list(`/users`)
-      .push(user);
+  create(user: User, uuid:string): Promise<void> {
+    return this.db.object(`/users/${uuid}`)
+      .set(user);
   }
 
 }
