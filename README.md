@@ -2,6 +2,8 @@
 
 This is a condominium election app developed in a project of the University of São Judas Tadeu, whose objective is to make an election where electors can vote in candidates through the application.
 
+See the app [here](https://ecjn00b.github.io/usjt-condominium-election/)
+
 ## Getting Started
 
 ### Prerequisites
