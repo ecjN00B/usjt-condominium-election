@@ -23,6 +23,24 @@ And add in src folder a env.ts file with your firebase credentials. ([See templa
 - [ ] Delete user
 - [ ] Generate user QrCode
 
+### Prod v1.1
+- [ ] Read candidate QrCode
+- [ ] Register vote in Web Service
+
+### Prod v1.2
+- [ ] Verify that candidate data has been loaded
+- [ ] Read the data of candidates stored in the Web Service (SQLite)
+- [X] Consult candidate information
+
+### Prod v1.3
+- [ ] Reads the current votes in the Web Service
+- [ ] Counts the votes by candidate
+- [ ] Presents the current votes
+
+### Prod v1.4
+- [ ] Count the votes by candidate and date
+- [ ] Presents voting history every 15 days
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
