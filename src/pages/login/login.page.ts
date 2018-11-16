@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage, AlertController, LoadingController } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { AlertController, IonicPage, Loading, LoadingController, NavController } from 'ionic-angular';
 
 @IonicPage({
   priority: 'high'
@@ -12,11 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 
 export class LoginPage {
-  
+
   username: string;
   password: string;
-
-  loader:any = this.createLoader();
 
   loginForm: FormGroup;
 
@@ -27,35 +26,38 @@ export class LoginPage {
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
-   }
-
-  login() {    
-    this.loader ? this.loader.present().then(()=> {
-      if(this.username == 'projeto' && this.password == '123456'){
-        this.navCtrl.setRoot('TabsPage');
-      }else{
-        if(this.loader){ 
-          this.loader.dismiss();
-          this.loader = this.createLoader();
-        }
-        this.showAlert('Falha ao autenticar', 'Usuário ou Senha incorreto');
-      }
-    }) : this.loader = this.createLoader();
   }
 
-  showAlert(title, message) {
+  login() {
+
+    let loading: Loading = this.showLoading("Please wait...");
+
+    if (this.username == 'projeto' && this.password == '123456') {
+      this.navCtrl.setRoot('TabsPage');
+      loading.dismiss();
+    } else {
+      loading.dismiss();
+      this.showAlert('Authentication Failed', 'User or password invalid');
+    }
+
+  }
+
+  private showLoading(message): Loading {
+    let loading: Loading = this.loadingCtrl.create({
+      content: message
+    });
+
+    loading.present();
+
+    return loading;
+  }
+
+  private showAlert(title: string, message: string): void {
     this.alertCtrl.create({
       title: title,
       subTitle: message,
       buttons: ['OK']
     }).present();
-  }
-
-  createLoader() {
-    return this.loadingCtrl.create({
-      content: "Please wait...",
-      dismissOnPageChange: true
-    });
   }
 
   goRegister() {

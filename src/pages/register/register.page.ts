@@ -44,7 +44,7 @@ export class RegisterPage extends BaseService {
 
   onSubmit(): void {
 
-    let loading: Loading = this.showLoading("Cadastrando...");
+    let loading: Loading = this.showLoading("Registering...");
     let formUser = this.signupForm.value;
     let username: string = formUser.username;
 
@@ -70,15 +70,15 @@ export class RegisterPage extends BaseService {
                 loading.dismiss();
               }).catch((error: any) => {
                 loading.dismiss();
-                this.showAlert(error);
+                this.showAlert(`Register failed`, error);
               });
           }).catch((error: any) => {
             loading.dismiss();
-            this.showAlert(error);
+            this.showAlert(`Register failed`, error);
           });
         } else {
           loading.dismiss();
-          this.showAlert(`The username ${username} is already in use`);
+          this.showAlert(`Register failed`, `The username ${username} is already in use`);
         }
 
       });
@@ -95,9 +95,10 @@ export class RegisterPage extends BaseService {
     return loading;
   }
 
-  private showAlert(message: string): void {
+  private showAlert(title: string, message: string): void {
     this.alertCtrl.create({
-      message: message,
+      title: title,
+      subTitle: message,
       buttons: ['Ok']
     }).present();
   }
