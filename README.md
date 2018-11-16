@@ -14,6 +14,15 @@ Before you can run the application, make sure that you have the following softwa
 
 And add in src folder a env.ts file with your firebase credentials. ([See template](docs/templates/env.template.ts))
 
+## To Do
+
+### Prod v1.0
+- [X] Create user
+- [X] Read user
+- [ ] Update user
+- [ ] Delete user
+- [ ] Generate user QrCode
+
 ## Contributing
 
 Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
