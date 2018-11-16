@@ -7,6 +7,7 @@ import { BaseService } from '../../providers/base/base.service';
 import { UserService } from '../../providers/user/user.service';
 
 import * as firebase from 'firebase/app'
+import { first } from 'rxjs/operators';
 
 @IonicPage({
   defaultHistory: ['LoginPage']
@@ -41,32 +42,47 @@ export class RegisterPage extends BaseService {
 
   }
 
-  onSubmit():void {
+  onSubmit(): void {
 
     let loading: Loading = this.showLoading("Cadastrando...");
     let formUser = this.signupForm.value;
+    let username: string = formUser.username;
 
-    this.authService.createAuthUser({
-      email: formUser.email,
-      password: formUser.password 
-    }).then((authUser: firebase.User) => {
+    this.userService.userExists(username)
+      .pipe(
+        first()
+      )
+      .subscribe((userExists: boolean) => {
 
-      delete formUser.password;
-      delete formUser.repassword;
-      let uuid:string = authUser["user"].uid;
+        if (!userExists) {
+          this.authService.createAuthUser({
+            email: formUser.email,
+            password: formUser.password
+          }).then((authUser: firebase.User) => {
 
-      this.userService.create(formUser, uuid)
-      .then(()=>{
-        console.log('Cadastrado');
-        loading.dismiss();
-      }).catch((error: any) => {
-        loading.dismiss();
-        this.showAlert(error);
+            delete formUser.password;
+            delete formUser.repassword;
+            let uuid: string = authUser["user"].uid;
+
+            this.userService.create(formUser, uuid)
+              .then(() => {
+                console.log('Cadastrado');
+                loading.dismiss();
+              }).catch((error: any) => {
+                loading.dismiss();
+                this.showAlert(error);
+              });
+          }).catch((error: any) => {
+            loading.dismiss();
+            this.showAlert(error);
+          });
+        } else {
+          loading.dismiss();
+          this.showAlert(`The username ${username} is already in use`);
+        }
+
       });
-    }).catch((error: any) =>{
-      loading.dismiss();
-      this.showAlert(error);
-    });   
+
   }
 
   private showLoading(message): Loading {
@@ -86,5 +102,5 @@ export class RegisterPage extends BaseService {
     }).present();
   }
 
- 
+
 }

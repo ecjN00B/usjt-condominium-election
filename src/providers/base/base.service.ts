@@ -10,8 +10,6 @@ const extractError = (error: Response | any): string => {
     } else {
         errMsg = error.message ? error.message : error.toString();
     }
-    console.error(errMsg);
-
     return errMsg;
 }
 
