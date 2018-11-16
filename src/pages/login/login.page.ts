@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AlertController, IonicPage, Loading, LoadingController, NavController } from 'ionic-angular';
+import { AuthService } from '../../providers/auth/auth.service';
 
 @IonicPage({
   priority: 'high'
@@ -14,15 +15,21 @@ import { AlertController, IonicPage, Loading, LoadingController, NavController }
 
 export class LoginPage {
 
-  username: string;
+  email: string;
   password: string;
 
   loginForm: FormGroup;
 
-  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public loadingCtrl: LoadingController, public formBuilder: FormBuilder) {
+  constructor(
+    public alertCtrl: AlertController,
+    public authService: AuthService,
+    public formBuilder: FormBuilder,
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController
+  ) {
 
     this.loginForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(4)]],
+      email: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
     });
 
@@ -32,13 +39,19 @@ export class LoginPage {
 
     let loading: Loading = this.showLoading("Please wait...");
 
-    if (this.username == 'projeto' && this.password == '123456') {
-      this.navCtrl.setRoot('TabsPage');
-      loading.dismiss();
-    } else {
-      loading.dismiss();
-      this.showAlert('Authentication Failed', 'User or password invalid');
-    }
+    this.authService.loginWithEmail(this.loginForm.value)
+      .then((isLogged: boolean) => {
+        if (isLogged) {
+          this.navCtrl.setRoot('TabsPage');
+          loading.dismiss();
+        } else {
+          loading.dismiss();
+          this.showAlert('Authentication Failed', 'User or password invalid');
+        }
+      }).catch((error: any) => {
+        this.showAlert('Authentication Failed', error);
+        loading.dismiss();
+      });
 
   }
 

@@ -66,7 +66,8 @@ export class RegisterPage extends BaseService {
 
             this.userService.create(formUser, uuid)
               .then(() => {
-                console.log('Cadastrado');
+                this.showAlert('Successful', 'You have been registered.');
+                this.navCtrl.setRoot('LoginPage');
                 loading.dismiss();
               }).catch((error: any) => {
                 loading.dismiss();
