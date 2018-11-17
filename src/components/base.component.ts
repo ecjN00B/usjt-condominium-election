@@ -1,23 +1,19 @@
 import { OnInit } from "@angular/core";
 
-import { App, AlertController, MenuController, NavController } from 'ionic-angular';
+import { AlertController, MenuController, NavController } from 'ionic-angular';
 
 import { AuthService } from "../providers/auth/auth.service";
 
 export abstract class BaseComponent implements OnInit {
 
-    protected navCtrl: NavController;
-
     constructor(
         public alertCtrl: AlertController,
         public authService: AuthService,
-        public app: App,
-        public menuCtrl: MenuController
+        public menuCtrl: MenuController,
+        public navCtrl: NavController
     ) { }
 
-    ngOnInit(): void {
-        this.navCtrl = this.app.getActiveNavs()[0];
-    }
+    ngOnInit(): void {}
 
     onLogout(): void {
         this.alertCtrl.create({
