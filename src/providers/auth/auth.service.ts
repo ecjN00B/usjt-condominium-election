@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { BaseService } from '../base/base.service';
+import { first } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService extends BaseService {
@@ -24,6 +25,19 @@ export class AuthService extends BaseService {
 
   logout(): Promise<any> {
     return this.afAuth.auth.signOut();
+  }
+
+  get authenticated(): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.afAuth
+        .authState
+        .pipe(
+          first()
+        )
+        .subscribe((authUser: firebase.User) => {
+          (authUser) ? resolve(true) : reject(false);
+        });
+    });
   }
 
 }
