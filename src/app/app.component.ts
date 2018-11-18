@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -12,6 +12,8 @@ import { UserService } from '../providers/user/user.service';
 })
 
 export class MyApp {
+
+  @ViewChild(Nav) nav: Nav;
 
   rootPage: any;
   currentUser: User;
@@ -31,12 +33,11 @@ export class MyApp {
 
         if (authUser) {
           this.rootPage = 'HomePage';
-
-          userService.currentUser
-            .valueChanges()
-            .subscribe((user: User) => {
-              this.currentUser = user;
-            });
+            userService.currentUser
+              .valueChanges()
+              .subscribe((user: User) => {
+                this.currentUser = user;
+              });
         } else {
           this.rootPage = 'LoginPage';
         }
@@ -47,6 +48,10 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  viewProfile() {
+    this.nav.push('UserProfilePage', this.currentUser);
   }
 
 }

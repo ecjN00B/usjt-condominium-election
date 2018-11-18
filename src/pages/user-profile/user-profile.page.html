@@ -1,0 +1,34 @@
+<ion-header>
+    <custom-header [title]="'User Profile Page'"></custom-header>
+  </ion-header>
+
+
+<ion-content padding>
+  <h3>Profile</h3>
+
+  <ion-item>
+    <ion-icon name="person" item-left></ion-icon>
+    <ion-input type="text" value="{{name}}" [disabled]="inputNameDisabled"></ion-input>
+    <button ion-button icon-only item-end clear (click)="changeIcon('name')">
+      <ion-icon [name]="editIconName" item-end></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="at" item-left></ion-icon>
+    <ion-input type="text" value="{{username}}" [disabled]="inputUsernameDisabled"></ion-input>
+    <button ion-button icon-only item-end clear (click)="changeIcon('username')">
+      <ion-icon [name]="editIconUsername" item-end></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item>
+    <ion-icon name="mail" item-left></ion-icon>
+    <ion-input type="text" value="{{email}}" [disabled]="inputEmailDisabled"></ion-input>
+    <button ion-button icon-only item-end clear (click)="changeIcon('email')">
+      <ion-icon [name]="editIconEmail" item-end></ion-icon>
+    </button>
+  </ion-item>
+  <br>
+  <button ion-button outline block>Save</button>
+  <button ion-button outline block>Cancel</button>
+
+</ion-content>
