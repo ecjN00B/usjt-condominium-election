@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 
 import { BaseService } from '../base/base.service';
 import { User } from '../../models/user.model';
@@ -12,10 +13,24 @@ import { User } from '../../models/user.model';
 export class UserService extends BaseService{
 
   users: Observable<User[]>;
+  currentUser: AngularFireObject<User>;
 
-  constructor(public db: AngularFireDatabase) {
+  constructor(
+    public afAuth: AngularFireAuth,
+    public db: AngularFireDatabase
+  ) {
     super();
     this.users = db.list<User>(`/users`).valueChanges();
+    this.listenAuthState();
+  }
+
+  private listenAuthState(): void {
+    this.afAuth
+      .authState
+      .subscribe((authUser: firebase.User) => {
+        if (authUser)
+          this.currentUser = this.db.object(`/users/${authUser.uid}`);
+      });
   }
 
   create(user: User, uuid:string): Promise<void> {

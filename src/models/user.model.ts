@@ -1,6 +1,14 @@
 export class User {
 
-    constructor(public name:string, public username:string, public email:string, public uid:string, public apt:string){
+    constructor(
+        public apt:string,
+        public description: string,
+        public email:string,
+        public key:string,
+        public name:string,
+        public photo: File,
+        public username:string
+    ){
 
     }
 
