@@ -7,17 +7,21 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 
 import { BaseService } from '../base/base.service';
+import { FirebaseApp } from 'angularfire2';
 import { User } from '../../models/user.model';
 
+import 'firebase/storage';
+
 @Injectable()
-export class UserService extends BaseService{
+export class UserService extends BaseService {
 
   users: Observable<User[]>;
   currentUser: AngularFireObject<User>;
 
   constructor(
     public afAuth: AngularFireAuth,
-    public db: AngularFireDatabase
+    public db: AngularFireDatabase,
+    public firebaseApp: FirebaseApp
   ) {
     super();
     this.users = db.list<User>(`/users`).valueChanges();
@@ -33,7 +37,7 @@ export class UserService extends BaseService{
       });
   }
 
-  create(user: User, uuid:string): Promise<void> {
+  create(user: User, uuid: string): Promise<void> {
     return this.db.object(`/users/${uuid}`)
       .set(user)
       .catch(this.handlePromiseError);
@@ -43,13 +47,21 @@ export class UserService extends BaseService{
     return this.db.list(`/users`,
       (ref: firebase.database.Reference) => ref.orderByChild('username').equalTo(username)
     )
-    .valueChanges()
-    .pipe(
-      map((users: User[]) => {
-        return users.length > 0;
-      }),
-      catchError(this.handleObservableError)
-    );
+      .valueChanges()
+      .pipe(
+        map((users: User[]) => {
+          return users.length > 0;
+        }),
+        catchError(this.handleObservableError)
+      );
+  }
+
+  uploadPhoto(file: File, userId: string): firebase.storage.UploadTask {
+    return this.firebaseApp
+      .storage()
+      .ref()
+      .child(`/users/${userId}`)
+      .put(file);
   }
 
 }

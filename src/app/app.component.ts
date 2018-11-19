@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthService } from '../providers/auth/auth.service';
 import { User } from '../models/user.model';
 import { UserService } from '../providers/user/user.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   templateUrl: 'app.html'
@@ -34,8 +35,10 @@ export class MyApp {
         if (authUser) {
           this.rootPage = 'HomePage';
             userService.currentUser
-              .valueChanges()
-              .subscribe((user: User) => {
+              .snapshotChanges()
+              .pipe(
+                map(action => ({ $key: action.key, ...action.payload.val() }))
+              ).subscribe((user: User) => {
                 this.currentUser = user;
               });
         } else {

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UserService } from '../../providers/user/user.service';
 
 @IonicPage()
 
@@ -20,14 +21,31 @@ export class UserProfilePage {
   private name: string;
   private username: string;
   private email: string;
+  private filePhoto: File;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public userService: UserService
+  ) {
   }
 
   ionViewDidLoad(): void {
     this.name = this.navParams.data.name;
     this.username = this.navParams.data.username;
     this.email = this.navParams.data.email;
+  }
+
+  onSubmit(event: Event): void {
+    event.preventDefault();
+
+    if (this.filePhoto) {
+      this.userService.uploadPhoto(this.filePhoto, this.navParams.data.$key);
+    }
+  }
+
+  onPhoto(event): void{
+    this.filePhoto = event.target.files[0];
   }
 
   changeIcon(input: string): void {

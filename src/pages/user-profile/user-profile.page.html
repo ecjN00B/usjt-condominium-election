@@ -9,26 +9,30 @@
   <ion-item>
     <ion-icon name="person" item-left></ion-icon>
     <ion-input type="text" value="{{name}}" [disabled]="inputNameDisabled"></ion-input>
-    <button ion-button icon-only item-end clear (click)="changeIcon('name')">
+    <button ion-button icon-only item-end clear (click)="changeIcon('name')" color="dark">
       <ion-icon [name]="editIconName" item-end></ion-icon>
     </button>
   </ion-item>
   <ion-item>
     <ion-icon name="at" item-left></ion-icon>
     <ion-input type="text" value="{{username}}" [disabled]="inputUsernameDisabled"></ion-input>
-    <button ion-button icon-only item-end clear (click)="changeIcon('username')">
+    <button ion-button icon-only item-end clear (click)="changeIcon('username')" color="dark">
       <ion-icon [name]="editIconUsername" item-end></ion-icon>
     </button>
   </ion-item>
   <ion-item>
     <ion-icon name="mail" item-left></ion-icon>
     <ion-input type="text" value="{{email}}" [disabled]="inputEmailDisabled"></ion-input>
-    <button ion-button icon-only item-end clear (click)="changeIcon('email')">
+    <button ion-button icon-only item-end clear (click)="changeIcon('email')" color="dark">
       <ion-icon [name]="editIconEmail" item-end></ion-icon>
     </button>
   </ion-item>
+  <ion-item>
+    <ion-icon name="image" item-start></ion-icon>
+    <ion-input type="file" (change)="onPhoto($event)"></ion-input>
+  </ion-item>
   <br>
-  <button ion-button outline block>Save</button>
+  <button ion-button outline block (click)="onSubmit($event)">Save</button>
   <button ion-button outline block>Cancel</button>
 
 </ion-content>

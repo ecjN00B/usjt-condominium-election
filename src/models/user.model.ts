@@ -4,9 +4,9 @@ export class User {
         public apt:string,
         public description: string,
         public email:string,
-        public key:string,
+        public $key:string,
         public name:string,
-        public photo: File,
+        public photo: string,
         public username:string
     ){
 
