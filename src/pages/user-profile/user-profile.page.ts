@@ -10,14 +10,14 @@ import { UserService } from '../../providers/user/user.service';
 })
 export class UserProfilePage {
 
-  private editIconName: string = "lock"
-  private editIconUsername: string = "lock"
-  private editIconEmail: string = "lock"
-
   private inputNameDisabled: boolean = true;
   private inputUsernameDisabled: boolean = true;
   private inputEmailDisabled: boolean = true;
-
+  
+  private editIconName: string = "lock";
+  private editIconUsername: string = "lock";
+  private editIconEmail: string = "lock";
+  
   private name: string;
   private username: string;
   private email: string;
@@ -48,32 +48,10 @@ export class UserProfilePage {
     this.filePhoto = event.target.files[0];
   }
 
-  changeIcon(input: string): void {
-    if(input == "name") {
-      if (this.editIconName == "lock") {
-        this.editIconName = "unlock";
-        this.inputNameDisabled = false;
-      } else {
-        this.editIconName = "lock";
-        this.inputNameDisabled = true;
-      }
-    }else if(input == "username") {
-      if (this.editIconUsername == "lock") {
-        this.editIconUsername = "unlock";
-        this.inputUsernameDisabled = false;
-      } else {
-        this.editIconUsername = "lock";
-        this.inputUsernameDisabled = true;
-      }
-    } else if(input == "email"){
-      if (this.editIconEmail == "lock") {
-        this.editIconEmail = "unlock";
-        this.inputEmailDisabled = false;
-      } else {
-        this.editIconEmail = "lock";
-        this.inputEmailDisabled = true;
-      }
-    }
+  changeIcon(): void {
+    this.editIconName = this.inputNameDisabled ? "lock" : "unlock";
+    this.editIconUsername = this.inputUsernameDisabled ? "lock" : "unlock";
+    this.editIconEmail = this.inputEmailDisabled ? "lock" : "unlock";
   }
 
 }
