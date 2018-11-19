@@ -1,8 +1,8 @@
 <ion-menu [content]="content" swipeEnabled="false">
-    <ion-content padding>
+    <ion-content padding *ngIf="currentUser">
         <ion-list>
             <ion-avatar ion-item class="menu-ion-avatar">
-                <img src="./assets/imgs/author.jpg" class="menu-avatar-image">
+                <img [src]="currentUser.photo || './assets/imgs/no-photo.jpg'" class="menu-avatar-image">
             </ion-avatar>
             <p ion-item text-wrap text-center>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis commodi provident aperiam quas architecto, ipsam reiciendis itaque earum facere repellendus.</p>
             <button ion-item (click)="viewProfile()" menuClose>Profile</button>

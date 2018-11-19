@@ -33,7 +33,7 @@ export class MyApp {
       .subscribe((authUser: firebase.User) => {
 
         if (authUser) {
-          this.rootPage = 'HomePage';
+          this.rootPage = 'TabsPage';
             userService.currentUser
               .snapshotChanges()
               .pipe(

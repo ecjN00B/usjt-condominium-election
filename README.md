@@ -19,7 +19,7 @@ And add in src folder a env.ts file with your firebase credentials. ([See templa
 ### Prod v1.0
 - [X] Create user
 - [X] Read user
-- [ ] Update user
+- [X] Update user
 - [ ] Delete user
 - [ ] Generate user QrCode
 
