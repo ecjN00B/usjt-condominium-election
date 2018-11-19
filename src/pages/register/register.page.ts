@@ -6,7 +6,7 @@ import { AuthService } from '../../providers/auth/auth.service';
 import { BaseService } from '../../providers/base/base.service';
 import { UserService } from '../../providers/user/user.service';
 
-import * as firebase from 'firebase/app'
+import * as firebase from 'firebase/app';
 import { first } from 'rxjs/operators';
 
 @IonicPage({

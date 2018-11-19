@@ -13,6 +13,7 @@
       <ion-icon [name]="editIconName" item-end></ion-icon>
     </button>
   </ion-item>
+  
   <ion-item>
     <ion-icon name="at" item-left></ion-icon>
     <ion-input type="text" value="{{currentUser.username}}" [(ngModel)]="currentUser.username" [disabled]="inputUsernameDisabled"></ion-input>
@@ -20,10 +21,14 @@
       <ion-icon [name]="editIconUsername" item-end></ion-icon>
     </button>
   </ion-item>
+
   <ion-item>
     <ion-icon name="image" item-start></ion-icon>
-    <ion-input type="file" (change)="onPhoto($event)"></ion-input>
+    <ion-input type="file" accept="image/*" (change)="onPhoto($event)"></ion-input>
   </ion-item>
+
+  <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
+
   <br>
   <button ion-button outline block (click)="onSubmit($event)">Save</button>
   <button ion-button outline block>Cancel</button>

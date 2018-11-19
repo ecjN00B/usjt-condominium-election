@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AuthService } from '../../providers/auth/auth.service';
+import * as firebase from 'firebase/app';
 import { first } from 'rxjs/operators';
 import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
@@ -15,14 +16,16 @@ import { UserService } from '../../providers/user/user.service';
 })
 export class UserProfilePage {
 
-  private inputNameDisabled: boolean = true;
-  private inputUsernameDisabled: boolean = true;
+  inputNameDisabled: boolean = true;
+  inputUsernameDisabled: boolean = true;
+  editIconName: string = "lock";
+  editIconUsername: string = "lock";
 
-  private editIconName: string = "lock";
-  private editIconUsername: string = "lock";
-
-  private currentUser: User;
+  currentUser: User;
+  uploadProgress: number;
+  
   private filePhoto: File;
+
 
   constructor(
     private afStorage: AngularFireStorage,
@@ -44,17 +47,29 @@ export class UserProfilePage {
     event.preventDefault();
 
     if (this.filePhoto) {
-      this.userService.uploadPhoto(this.filePhoto, this.currentUser.$key)
-        .then((UploadTaskSnapshot: firebase.storage.UploadTaskSnapshot) => {
-          this.afStorage.ref(`/users/${this.currentUser.$key}`)
-            .getDownloadURL()
-            .pipe(
-              first()
-            )
-            .subscribe((downloadURL) => {
-              this.editUser(downloadURL);
-            });          
-        });
+      let uploadTask = this.userService.uploadPhoto(this.filePhoto, this.currentUser.$key);
+      
+
+
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+        (snapshot: any) =>  {
+          this.uploadProgress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
+        },
+        (error) => {
+          console.log(error);
+      });
+
+      uploadTask.then((UploadTaskSnapshot: firebase.storage.UploadTaskSnapshot) => {
+        this.afStorage.ref(`/users/${this.currentUser.$key}`)
+          .getDownloadURL()
+          .pipe(
+            first()
+          )
+          .subscribe((downloadURL) => {
+            this.editUser(downloadURL);
+          });          
+      });
+
     } else {
       this.editUser();
     }
@@ -72,6 +87,7 @@ export class UserProfilePage {
         photo: photoUrl || this.currentUser.photo || ''
       }).then(() => {
         this.filePhoto = undefined;
+        this.uploadProgress = 0;
       });
   }
 
