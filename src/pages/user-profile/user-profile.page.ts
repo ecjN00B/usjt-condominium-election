@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AngularFireStorage } from 'angularfire2/storage';
+import { AuthService } from '../../providers/auth/auth.service';
 import { first } from 'rxjs/operators';
 import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
@@ -25,10 +26,14 @@ export class UserProfilePage {
 
   constructor(
     private afStorage: AngularFireStorage,
+    public authService: AuthService,
     public navCtrl: NavController,
     public navParams: NavParams,
     public userService: UserService
-  ) {
+  ) {}
+
+  ionViewCanEnter(): Promise<boolean> {
+    return this.authService.authenticated;
   }
 
   ionViewDidLoad(): void {

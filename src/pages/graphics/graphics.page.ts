@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
+
+import { AuthService } from '../../providers/auth/auth.service';
 import { Chart } from 'chart.js';
 
 @IonicPage()
@@ -14,8 +16,10 @@ export class GraphicsPage {
 
   doughnutChart: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public authService: AuthService, public navCtrl: NavController) {}
 
+  ionViewCanEnter(): Promise<boolean> {
+    return this.authService.authenticated;
   }
 
   ionViewDidLoad() {

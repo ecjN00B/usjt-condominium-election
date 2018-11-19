@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+import { AuthService } from '../../providers/auth/auth.service';
 import { IonicPage } from 'ionic-angular';
 
 @IonicPage({
@@ -17,7 +18,10 @@ export class TabsPage {
   candidates = 'CandidatesPage';
   graphics = 'GraphicsPage';
 
-  constructor() {
+  constructor(public authService: AuthService) {}
 
+  ionViewCanEnter(): Promise<boolean> {
+    return this.authService.authenticated;
   }
+
 }
