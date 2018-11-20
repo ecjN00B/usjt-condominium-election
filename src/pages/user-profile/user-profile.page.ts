@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AuthService } from '../../providers/auth/auth.service';
@@ -32,6 +32,7 @@ export class UserProfilePage {
     public authService: AuthService,
     public navCtrl: NavController,
     public navParams: NavParams,
+    public toastCtrl: ToastController,
     public userService: UserService
   ) {}
 
@@ -49,8 +50,6 @@ export class UserProfilePage {
     if (this.filePhoto) {
       let uploadTask = this.userService.uploadPhoto(this.filePhoto, this.currentUser.$key);
       
-
-
       uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
         (snapshot: any) =>  {
           this.uploadProgress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
@@ -88,12 +87,21 @@ export class UserProfilePage {
       }).then(() => {
         this.filePhoto = undefined;
         this.uploadProgress = 0;
+        this.showToast('Update successful');
       });
   }
 
   changeIcon(): void {
     this.editIconName = this.inputNameDisabled ? "lock" : "unlock";
     this.editIconUsername = this.inputUsernameDisabled ? "lock" : "unlock";
+  }
+  
+  showToast(message: string): void {
+    this.toastCtrl.create({
+      message: message,
+      showCloseButton: true,
+      closeButtonText: 'Ok'
+    }).present();
   }
 
 }
