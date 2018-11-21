@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController, IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { Alert, AlertController, IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../../providers/auth/auth.service';
@@ -66,9 +66,11 @@ export class RegisterPage extends BaseService {
 
             this.userService.create(formUser, uuid)
               .then(() => {
-                this.showAlert('Successful', 'You have been registered.');
-                this.navCtrl.setRoot('LoginPage');
-                loading.dismiss();
+                let alert = this.showAlert('Successful', 'You have been registered.');
+                alert.onDidDismiss(() => {
+                  this.navCtrl.setRoot('TutorialPage');
+                  loading.dismiss();
+                });
               }).catch((error: any) => {
                 loading.dismiss();
                 this.showAlert(`Register failed`, error);
@@ -96,12 +98,16 @@ export class RegisterPage extends BaseService {
     return loading;
   }
 
-  private showAlert(title: string, message: string): void {
-    this.alertCtrl.create({
+  private showAlert(title: string, message: string): Alert {
+    let alert = this.alertCtrl.create({
       title: title,
       subTitle: message,
       buttons: ['Ok']
-    }).present();
+    });
+    
+    alert.present();
+
+    return alert;
   }
 
 
