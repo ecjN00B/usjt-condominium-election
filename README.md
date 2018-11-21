@@ -25,15 +25,15 @@ And add in src folder a env.ts file with your firebase credentials. ([See templa
 
 ### Prod v1.1
 - [ ] Read candidate QrCode
-- [ ] Register vote in Web Service
+- [ ] Register vote in RESTful Web Service
 
 ### Prod v1.2
 - [ ] Verify that candidate data has been loaded
-- [ ] Read the data of candidates stored in the Web Service (SQLite)
+- [ ] Read the data of candidates stored in the RESTful Web Service
 - [X] Consult candidate information
 
 ### Prod v1.3
-- [ ] Reads the current votes in the Web Service
+- [ ] Reads the current votes in the RESTful Web Service
 - [ ] Counts the votes by candidate
 - [ ] Presents the current votes
 
