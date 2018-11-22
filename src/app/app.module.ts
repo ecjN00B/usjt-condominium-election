@@ -9,10 +9,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../providers/auth/auth.service';
 import { Environment } from '../models/environment.model';
 import { UserService } from '../providers/user/user.service';
-import { AngularFireAuth } from 'angularfire2/auth';
 
 const environment = new Environment();
 

@@ -8,6 +8,7 @@ export class Environment {
     private projectId: string;
     private storageBucket: string;
     private messagingSenderId: string;
+    private webServiceURL: string;
     
     constructor(){
         this.apiKey = data.process.env.apiKey;
@@ -16,6 +17,7 @@ export class Environment {
         this.projectId = data.process.env.projectId;
         this.storageBucket = data.process.env.storageBucket;
         this.messagingSenderId = data.process.env.messagingSenderId;
+        this.webServiceURL = data.process.env.webServiceURL;
     }
 
     getApiKey():string {
@@ -40,6 +42,10 @@ export class Environment {
 
     getMessagingSenderId():string {
         return this.messagingSenderId;
+    }
+
+    getWebServiceURL():string {
+        return this.webServiceURL;
     }
 
 }

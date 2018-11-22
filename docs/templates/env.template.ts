@@ -5,6 +5,7 @@ export const process = {
         databaseURL: "YOUR-FIREBASE-DATABASE-URL",
         projectId: "YOUR-FIREBASE-PROJECT-ID",
         storageBucket: "YOUR-FIREBASE-STORAGE-BUCKET",
-        messagingSenderId: "YOUR-FIREBASE-MESSAGING-SENDER-ID"
+        messagingSenderId: "YOUR-FIREBASE-MESSAGING-SENDER-ID",
+        webServiceURL: "https://YOUR-WEBSERVICE-URL.herokuapp.com"
     }
 }

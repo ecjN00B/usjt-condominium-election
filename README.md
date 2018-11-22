@@ -28,8 +28,8 @@ And add in src folder a env.ts file with your firebase credentials. ([See templa
 - [ ] Register vote in RESTful Web Service
 
 ### Prod v1.2
-- [ ] Verify that candidate data has been loaded
-- [ ] Read the data of candidates stored in the RESTful Web Service
+- [X] Verify that candidate data has been loaded
+- [X] Read the data of candidates stored in the RESTful Web Service
 - [X] Consult candidate information
 
 ### Prod v1.3

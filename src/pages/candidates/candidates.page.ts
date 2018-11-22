@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth/auth.service';
+import { RestService } from '../../providers/rest/rest.service';
 
 @IonicPage({
   segment: 'list'
@@ -15,52 +16,32 @@ import { AuthService } from '../../providers/auth/auth.service';
 export class CandidatesPage {
 
   searchQuery: string = '';
-  candidates: Array<any>;
+  candidates: any;
 
   ionViewCanEnter(): Promise<boolean> {
     return this.authService.authenticated;
   }
 
-  constructor(public authService: AuthService, public navCtrl: NavController) {
+  constructor(public authService: AuthService, public navCtrl: NavController, public restService: RestService) {
     this.initializeCandidates();
   }
 
-  initializeCandidates() {
-    this.candidates = [
-      {
-        'name':'N00B',
-        'sigla':'#000',
-        'description': 'Taxation is theft'
-      },
-      {
-        'name':'Candidato 1',
-        'sigla':'#001',
-        'description': 'Taxation is theft'
-      },
-      {
-        'name':'Candidato 2',
-        'sigla':'#002',
-        'description': 'Taxation is theft'
-      },
-      {
-        'name':'Candidato 3',
-        'sigla':'#003',
-        'description': 'Taxation is theft'
-      }
-    ];
+  async initializeCandidates() {
+    await this.restService.getCandidates()
+    .then(data => {
+      this.candidates = data;
+    });
   }
 
-  getItems(ev: any) {
-    // Reset items back to all of the items
-    this.initializeCandidates();
+  async getItems(ev: any) {
 
-    // set val to the value of the searchbar
+    await this.initializeCandidates();
+
     const val = ev.target.value;
 
-    // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.candidates = this.candidates.filter((candidate) => {
-        return (candidate.name.toLowerCase().indexOf(val.toLowerCase()) > -1) || (candidate.sigla.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (candidate.name.toLowerCase().indexOf(val.toLowerCase()) > -1) || (candidate.number.toString().indexOf(val.toLowerCase()) > -1);
       })
     }
   }

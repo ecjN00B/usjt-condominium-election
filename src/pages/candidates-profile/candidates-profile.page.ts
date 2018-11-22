@@ -16,7 +16,7 @@ export class CandidatesProfilePage {
 
   name: String;
   description: String;
-  sigla: String;
+  number: String;
 
   ionViewCanEnter(): Promise<boolean> {
     return this.authService.authenticated;
@@ -25,7 +25,7 @@ export class CandidatesProfilePage {
   ionViewDidLoad(){
     this.name = this.navParams.data.name;
     this.description = this.navParams.data.description;
-    this.sigla = this.navParams.data.sigla;
+    this.number = this.navParams.data.number;
   }
 
   constructor(
