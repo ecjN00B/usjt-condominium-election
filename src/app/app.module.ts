@@ -52,4 +52,5 @@ const firebaseAppConfig: FirebaseAppConfig = {
     UserService
   ]
 })
+
 export class AppModule {}

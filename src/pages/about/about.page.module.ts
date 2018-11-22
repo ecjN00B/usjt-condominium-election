@@ -4,6 +4,7 @@ import { ComponentsModule } from '../../components/components.module';
 
 import { AboutPage } from './about.page';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { NgxQRCodeModule } from 'ngx-qrcode2'
 
 @NgModule({
   declarations: [
@@ -11,7 +12,8 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
   ],
   imports: [
     ComponentsModule,
-    IonicPageModule.forChild(AboutPage)
+    IonicPageModule.forChild(AboutPage),
+    NgxQRCodeModule
   ],
   providers: [
     BarcodeScanner
