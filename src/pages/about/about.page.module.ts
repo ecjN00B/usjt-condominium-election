@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { AboutPage } from './about.page';
 import { ComponentsModule } from '../../components/components.module';
+
+import { AboutPage } from './about.page';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @NgModule({
   declarations: [
@@ -11,5 +13,8 @@ import { ComponentsModule } from '../../components/components.module';
     ComponentsModule,
     IonicPageModule.forChild(AboutPage)
   ],
+  providers: [
+    BarcodeScanner
+  ]
 })
 export class AboutPageModule {}

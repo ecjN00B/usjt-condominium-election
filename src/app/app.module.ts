@@ -32,7 +32,11 @@ const firebaseAppConfig: FirebaseAppConfig = {
   imports: [
     AngularFireModule.initializeApp(firebaseAppConfig),
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {
+      scrollPadding: false,
+      scrollAssist: true, 
+      autoFocusAssist: false
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

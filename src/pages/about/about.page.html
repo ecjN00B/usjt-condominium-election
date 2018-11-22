@@ -3,5 +3,8 @@
 </ion-header>
 
 <ion-content padding>
-
+  <button ion-button block (click)="onGetBarcode()">Barcode Scanner</button>
+  <div *ngIf="barcodeResult">
+    {{barcodeResult | json}}
+  </div>
 </ion-content>
