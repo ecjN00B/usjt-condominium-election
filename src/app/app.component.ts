@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { App, Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -20,6 +20,7 @@ export class MyApp {
   currentUser: User;
 
   constructor(
+    appCtrl: App,
     authService: AuthService,
     platform: Platform,
     statusBar: StatusBar,
@@ -33,16 +34,16 @@ export class MyApp {
       .subscribe((authUser: firebase.User) => {
 
         if (authUser) {
-          this.rootPage = 'TabsPage';
-            userService.currentUser
-              .snapshotChanges()
-              .pipe(
-                map(action => ({ $key: action.key, ...action.payload.val() }))
-              ).subscribe((user: User) => {
-                this.currentUser = user;
-              });
+          userService.currentUser
+          .snapshotChanges()
+          .pipe(
+            map(action => ({ $key: action.key, ...action.payload.val() }))
+            ).subscribe((user: User) => {
+              this.currentUser = user;
+              appCtrl.getRootNav().setRoot('TabsPage', { currentUser: this.currentUser });
+            });
         } else {
-          this.rootPage = 'LoginPage';
+          appCtrl.getRootNav().setRoot('LoginPage');
         }
 
       });
@@ -53,7 +54,7 @@ export class MyApp {
     });
   }
 
-  viewProfile() {
+  viewProfile(): void {
     this.nav.push('UserProfilePage', this.currentUser);
   }
 

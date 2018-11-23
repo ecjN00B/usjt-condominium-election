@@ -62,6 +62,7 @@ export class RegisterPage extends BaseService {
 
             delete formUser.password;
             delete formUser.repassword;
+            formUser.access = 1;
             let uuid: string = authUser["user"].uid;
 
             this.userService.create(formUser, uuid)

@@ -3,4 +3,5 @@
   <ion-tab [root]="about" tabTitle="About" tabIcon="information-circle"></ion-tab>
   <ion-tab [root]="candidates" tabTitle="Candidates" tabIcon="contacts"></ion-tab>
   <ion-tab [root]="graphics" tabTitle="Graphics" tabIcon="stats"></ion-tab>
+  <ion-tab *ngIf="currentUser && currentUser.access == 2" tabTitle="Admin" tabIcon="construct"></ion-tab>
 </ion-tabs>
