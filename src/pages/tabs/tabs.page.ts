@@ -16,10 +16,11 @@ export class TabsPage {
 
   currentUser: User;
 
-  home = 'HomePage';
   about = 'AboutPage';
+  admin = 'AdminPage';
   candidates = 'CandidatesPage';
   graphics = 'GraphicsPage';
+  home = 'HomePage';
 
   constructor(public authService: AuthService, public navParams: NavParams) {}
 

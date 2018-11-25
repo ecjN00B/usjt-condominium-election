@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, Platform } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth/auth.service';
 import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner';
@@ -28,8 +28,12 @@ export class AboutPage {
     public authService: AuthService,
     public barcodeScanner: BarcodeScanner,
     public navCtrl: NavController,
+    private platform: Platform,
     public userService: UserService
   ) {
+    this.platform.registerBackButtonAction(() => {
+      this.navCtrl.pop();
+    });
     this.getCurrentUser();
   }
 
