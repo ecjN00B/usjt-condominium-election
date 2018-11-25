@@ -49,6 +49,22 @@ export class UserService extends BaseService {
       .catch(this.handlePromiseError);
   }
 
+  findUser(uuid: string): any {
+    return new Promise((resolve, reject) => {
+      this.db.database.ref('users').child(uuid)
+      .once('value')
+      .then((snapshot) => {
+        resolve(snapshot.val());
+      }).catch((err) => {
+        reject(err);
+      });
+    });
+  }
+
+  // getAuthCurrentUser(): any {
+  //   return this.firebaseApp.auth().currentUser;
+  // }
+
   userExists(username: string): Observable<boolean> {
     return this.db.list(`/users`,
       (ref: firebase.database.Reference) => ref.orderByChild('username').equalTo(username)
