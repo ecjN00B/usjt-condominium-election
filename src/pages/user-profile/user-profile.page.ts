@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform, ToastController } from 'ionic-angular';
 
 import { AngularFireStorage } from 'angularfire2/storage';
 import { AuthService } from '../../providers/auth/auth.service';
@@ -32,9 +32,14 @@ export class UserProfilePage {
     public authService: AuthService,
     public navCtrl: NavController,
     public navParams: NavParams,
+    private platform: Platform,
     public toastCtrl: ToastController,
     public userService: UserService
-  ) {}
+  ) {
+    this.platform.registerBackButtonAction(() => {
+      this.navCtrl.pop();
+    });
+  }
 
   ionViewCanEnter(): Promise<boolean> {
     return this.authService.authenticated;

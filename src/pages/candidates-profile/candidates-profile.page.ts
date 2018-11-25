@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth/auth.service';
 
@@ -31,7 +31,12 @@ export class CandidatesProfilePage {
   constructor(
     public authService: AuthService,
     public navCtrl: NavController,
-    public navParams: NavParams
-  ) {}
+    public navParams: NavParams,
+    private platform: Platform
+  ) {
+    this.platform.registerBackButtonAction(() => {
+      this.navCtrl.pop();
+    });
+  }
 
 }
