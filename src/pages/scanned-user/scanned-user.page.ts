@@ -28,9 +28,4 @@ export class ScannedUserPage {
     });
   }
 
-  dismiss(): void {
-    this.navCtrl.pop();
-  }
-
-
 }
