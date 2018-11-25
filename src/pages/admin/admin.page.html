@@ -1,0 +1,13 @@
+<ion-header>
+  <custom-header [title]="'Admin Page'"></custom-header>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button block (click)="onGetBarcode()">Barcode Scanner</button>
+  <br>
+  <ion-list no-lines>
+    <button ion-item *ngFor="let user of users | async" (click)="onSelectUser(user)">
+      {{ user.name }}
+    </button>
+  </ion-list>
+</ion-content>

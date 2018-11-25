@@ -24,7 +24,7 @@ And add in src folder a env.ts file with your firebase credentials. ([See templa
 - [X] Generate user QrCode
 
 ### Prod v1.1
-- [ ] Read candidate QrCode
+- [X] Read candidate QrCode
 - [ ] Register vote in RESTful Web Service
 
 ### Prod v1.2
