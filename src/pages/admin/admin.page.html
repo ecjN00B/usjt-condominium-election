@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content padding>
-  <button ion-button block (click)="onGetBarcode()">Barcode Scanner</button>
+  <button ion-button block (click)="onGetBarcode()">Elector Verify</button>
   <br>
   <ion-list no-lines>
     <button ion-item *ngFor="let user of users | async" (click)="onSelectUser(user)">

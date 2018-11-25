@@ -1,0 +1,15 @@
+<ion-content>
+    <ion-buttons start>
+        <button ion-button outline (click)="dismiss()">
+            <ion-icon name="arrow-round-back"></ion-icon>
+        </button>
+    </ion-buttons>
+    <div *ngIf="user">
+        <ion-avatar>
+            <img class="round" [src]="user.photo || '../assets/imgs/no-photo.jpg'">
+        </ion-avatar>
+        <h2 text-center>{{ user.name }}</h2>
+        <p text-center>@{{ user.username }}</p>
+        <p text-center>{{ user.email }}</p>
+    </div>
+</ion-content>

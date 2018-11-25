@@ -49,7 +49,7 @@ export class UserService extends BaseService {
       .catch(this.handlePromiseError);
   }
 
-  findUser(uuid: string): any {
+  findUser(uuid: string): Promise<User> {
     return new Promise((resolve, reject) => {
       this.db.database.ref('users').child(uuid)
       .once('value')

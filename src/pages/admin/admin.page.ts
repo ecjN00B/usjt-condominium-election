@@ -52,14 +52,7 @@ export class AdminPage {
             this.userService.findUser(barcodeResult.text)
             .then((user) => {
               if(user){
-                this.showAlert(`Success`,
-                `
-                Content:<br>
-                Name: ${user.name}<br>
-                Email: ${user.email}<br>
-                Username: ${user.username}<br>
-                Photo: ${user.photo || ''}<br>
-                `);
+                this.navCtrl.push('ScannedUserPage', user);
               }
             }).catch((err) => {
               this.showAlert(`Error`, `Invalid user`);
