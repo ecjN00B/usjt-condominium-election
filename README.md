@@ -14,6 +14,8 @@ Before you can run the application, make sure that you have the following softwa
 
 And add in src folder a env.ts file with your firebase credentials. ([See template](docs/templates/env.template.ts))
 
+**Caution:** You can comment service-worker in index.html during development. If you do have this line uncommented, make sure to tick the ‘Update on reload’ or ‘Bypass for network’ options in the Application > Service Workers section of Chrome DevTools. You can also manually stop/unregister service workers from here as well.
+
 ## To Do
 
 ### Prod v1.0
