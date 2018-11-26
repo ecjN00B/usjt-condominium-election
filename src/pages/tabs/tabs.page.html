@@ -1,7 +1,7 @@
 <ion-tabs>
   <ion-tab [root]="home" tabTitle="Home" tabIcon="home"></ion-tab>
-  <ion-tab [root]="about" tabTitle="About" tabIcon="information-circle"></ion-tab>
   <ion-tab [root]="candidates" tabTitle="Candidates" tabIcon="contacts"></ion-tab>
   <ion-tab [root]="graphics" tabTitle="Graphics" tabIcon="stats"></ion-tab>
+  <ion-tab [root]="etitulo" tabTitle="E-Titulo" tabIcon="qr-scanner"></ion-tab>
   <ion-tab [root]="admin" tabTitle="Admin" tabIcon="construct" *ngIf="currentUser && currentUser.access == 2"></ion-tab>
 </ion-tabs>

@@ -16,7 +16,7 @@ export class TabsPage {
 
   currentUser: User;
 
-  about = 'AboutPage';
+  etitulo = 'TitlePage';
   admin = 'AdminPage';
   candidates = 'CandidatesPage';
   graphics = 'GraphicsPage';

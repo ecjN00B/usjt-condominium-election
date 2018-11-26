@@ -35,6 +35,7 @@ export class RegisterPage extends BaseService {
     this.signupForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(4)]],
       username: ['', Validators.required],
+      apt: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repassword: ['', [Validators.required, Validators.minLength(6)]]
@@ -63,6 +64,7 @@ export class RegisterPage extends BaseService {
             delete formUser.password;
             delete formUser.repassword;
             formUser.access = 1;
+            formUser.voted = false;
             let uuid: string = authUser["user"].uid;
 
             this.userService.create(formUser, uuid)

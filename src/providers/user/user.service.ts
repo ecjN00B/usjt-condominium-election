@@ -43,7 +43,7 @@ export class UserService extends BaseService {
       .catch(this.handlePromiseError);
   }
 
-  edit(user: {name: string, username: string, photo: string}): Promise<void> {
+  edit(user: {name: string, username: string, photo: string, voted?: boolean}): Promise<void> {
     return this.currentUser
       .update(user)
       .catch(this.handlePromiseError);
