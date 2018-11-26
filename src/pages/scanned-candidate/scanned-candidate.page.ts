@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
 
+import { RestService } from '../../providers/rest/rest.service';
+
 @IonicPage()
 
 @Component({
@@ -12,21 +14,37 @@ export class ScannedCandidatePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private platform: Platform
+    private platform: Platform,
+    private restService: RestService
   ) {
       this.platform.registerBackButtonAction(() => {
         this.navCtrl.pop();
       });
     }
 
-  candidate: Object;
+  candidate: any;
 
   ionViewDidLoad(){
     this.candidate = this.navParams.data;
   }
 
+  onCancel(): void {
+    this.navCtrl.pop();
+  }
+
   onVote(): void {
-    console.log('voto computado');
+    
+    let vote = {
+      candidateId: this.candidate._id
+    };
+
+    this.restService.addVote(vote)
+      .then((voteStatus) => {
+        console.log(voteStatus);
+        this.navCtrl.pop();
+      }).catch((err) => {
+        console.log('Error: ', err);
+      })
   }
 
 }

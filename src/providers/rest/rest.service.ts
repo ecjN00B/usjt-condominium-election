@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Environment } from '../../models/environment.model';
 
 const environment = new Environment();
-const headers = new HttpHeaders({'Content-Type':'application/json; charset=utf-8'});
+const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'});
 
 @Injectable()
 export class RestService {
@@ -45,7 +45,7 @@ export class RestService {
 
   addVote(vote: {candidateId: string, voted_date?: Date}): Promise<Object> {
     return new Promise((resolve, reject) => {
-      this.http.post(`${this.apiURL}/api/votes`, JSON.stringify(vote), { headers: headers, responseType: 'json' })
+      this.http.post(`${this.apiURL}/api/votes`, JSON.stringify(vote), { headers: headers, responseType: 'text' })
         .subscribe(res => {
           resolve(res);
         }, (err) => {
