@@ -2,12 +2,9 @@
   <custom-header [title]="'About Page'"></custom-header>
 </ion-header>
 
-<ion-content padding *ngIf="currentUser">
-  <button ion-button block (click)="onGetBarcode()">Barcode Scanner</button>
-  <div *ngIf="barcodeResult">
-    {{barcodeResult | json}}
-  </div>
-  <br>
+<ion-content padding center *ngIf="currentUser">
   <ngx-qrcode [qrc-value]="currentUser.$key" qrc-element-type="text" qrc-class="qrcode"></ngx-qrcode>
   <ion-label text-center>{{currentUser.name}}</ion-label>
+  <br>
+  <button ion-button block outline (click)="onGetBarcode()">Vote</button>
 </ion-content>

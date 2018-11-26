@@ -8,9 +8,9 @@
         <img class="round" [src]="user.photo || '../assets/imgs/no-photo.jpg'">
     </ion-avatar>
     <h2 text-center>{{ user.name }}
-        <label text-center *ngIf="user.apt"> - #{{ user.apt }}</label>
-        <label text-center *ngIf="user.number"> - #{{ user.number }}</label>
+    <p text-center *ngIf="user.apt"> - #{{ user.apt }}</p>
+    <p text-center *ngIf="user.number"> - #{{ user.number }}</p>
     </h2>
-    <p text-center>@{{ user.username }}</p>
-    <p text-center>{{ user.email }}</p>
+    <p text-center *ngIf="user.username">@{{ user.username }}</p>
+    <p text-center *ngIf="user.email">{{ user.email }}</p>
 </div>

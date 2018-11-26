@@ -40,7 +40,7 @@ export class AdminPage {
     }
 
   onGetBarcode(): void {
-    this.qrcode.scanAndFindUser();
+    this.qrcode.scanAndFindUser(false);
   }
 
   onSelectUser(user) {

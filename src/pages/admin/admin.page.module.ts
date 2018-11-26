@@ -3,6 +3,7 @@ import { IonicPageModule } from 'ionic-angular';
 
 import { AdminPage } from './admin.page';
 import { ComponentsModule } from '../../components/components.module';
+import { HttpClientModule } from '@angular/common/http';
 import { QrcodeService } from '../../providers/qrcode/qrcode.service';
 
 @NgModule({
@@ -11,6 +12,7 @@ import { QrcodeService } from '../../providers/qrcode/qrcode.service';
   ],
   imports: [
     ComponentsModule,
+    HttpClientModule,
     IonicPageModule.forChild(AdminPage)
   ],
   providers: [

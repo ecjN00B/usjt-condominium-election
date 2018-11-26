@@ -27,10 +27,10 @@ export class CandidatesPage {
   }
 
   async initializeCandidates() {
-    await this.restService.getCandidates()
-    .then(data => {
-      this.candidates = data;
-    });
+    await this.restService.getAllCandidates()
+      .then(data => {
+        this.candidates = data;
+      });
   }
 
   async getItems(ev: any) {

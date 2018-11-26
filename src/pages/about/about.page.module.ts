@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { ComponentsModule } from '../../components/components.module';
 
 import { AboutPage } from './about.page';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { ComponentsModule } from '../../components/components.module';
+import { HttpClientModule } from '@angular/common/http';
 import { NgxQRCodeModule } from 'ngx-qrcode2'
+import { QrcodeService } from '../../providers/qrcode/qrcode.service';
 
 @NgModule({
   declarations: [
@@ -12,11 +13,12 @@ import { NgxQRCodeModule } from 'ngx-qrcode2'
   ],
   imports: [
     ComponentsModule,
+    HttpClientModule,
     IonicPageModule.forChild(AboutPage),
     NgxQRCodeModule
   ],
   providers: [
-    BarcodeScanner
+    QrcodeService
   ]
 })
 export class AboutPageModule {}

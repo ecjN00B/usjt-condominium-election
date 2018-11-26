@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, IonicPage, Platform } from 'ionic-angular';
 
 import { AuthService } from '../../providers/auth/auth.service';
-import { BarcodeScanner, BarcodeScanResult } from '@ionic-native/barcode-scanner';
+import { QrcodeService } from '../../providers/qrcode/qrcode.service';
 import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
 
@@ -18,17 +18,15 @@ export class AboutPage {
 
   currentUser: User;
 
-  barcodeResult: BarcodeScanResult;
-
   ionViewCanEnter(): Promise<boolean> {
     return this.authService.authenticated;
   }
 
   constructor(
     public authService: AuthService,
-    public barcodeScanner: BarcodeScanner,
     public navCtrl: NavController,
     private platform: Platform,
+    public qrcodeService: QrcodeService,
     public userService: UserService
   ) {
     this.platform.registerBackButtonAction(() => {
@@ -50,13 +48,7 @@ export class AboutPage {
   }
 
   onGetBarcode(): void {
-    this.barcodeScanner.scan()
-      .then((barcodeResult: BarcodeScanResult) => {
-        this.barcodeResult = barcodeResult;
-        console.log('Result: ' + this.barcodeResult);
-      }).catch((err) => {
-        console.log(err);
-      })
+    this.qrcodeService.scanAndFindUser();
   }
 
 }
