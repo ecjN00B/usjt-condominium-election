@@ -35,9 +35,9 @@ And add in src folder a env.ts file with your firebase credentials. ([See templa
 - [X] Consult candidate information
 
 ### Prod v1.3
-- [ ] Reads the current votes in the RESTful Web Service
-- [ ] Counts the votes by candidate
-- [ ] Presents the current votes
+- [X] Reads the current votes in the RESTful Web Service
+- [X] Counts the votes by candidate
+- [X] Presents the current votes
 
 ### Prod v1.4
 - [ ] Count the votes by candidate and date

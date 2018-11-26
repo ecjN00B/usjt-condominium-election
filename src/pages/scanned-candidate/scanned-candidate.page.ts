@@ -55,7 +55,7 @@ export class ScannedCandidatePage {
   onVote(): void {
     
     let vote = {
-      candidateId: this.candidate._id
+      candidate: this.candidate._id
     };
 
     this.restService.addVote(vote)

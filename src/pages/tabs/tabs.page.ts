@@ -19,7 +19,7 @@ export class TabsPage {
   etitulo = 'TitlePage';
   admin = 'AdminPage';
   candidates = 'CandidatesPage';
-  graphics = 'GraphicsPage';
+  charts = 'ChartsPage';
   home = 'HomePage';
 
   constructor(public authService: AuthService, public navParams: NavParams) {}

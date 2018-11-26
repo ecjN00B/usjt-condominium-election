@@ -43,7 +43,7 @@ export class RestService {
     });
   }
 
-  addVote(vote: {candidateId: string, voted_date?: Date}): Promise<Object> {
+  addVote(vote: {candidate: string, voted_date?: Date}): Promise<Object> {
     return new Promise((resolve, reject) => {
       this.http.post(`${this.apiURL}/api/votes`, JSON.stringify(vote), { headers: headers, responseType: 'text' })
         .subscribe(res => {
