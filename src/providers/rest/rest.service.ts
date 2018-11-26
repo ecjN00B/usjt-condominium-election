@@ -13,27 +13,37 @@ export class RestService {
 
   constructor(public http: HttpClient) {}
 
-  getCandidates() {
-    return new Promise(resolve => {
+  getAllCandidates(): Promise<Object>{
+    return new Promise((resolve, reject) => {
       this.http.get(`${this.apiURL}/api/candidates`, { headers: headers, responseType: 'json' }).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        reject(err);
       });
     });
   }
 
-  getVotes() {
-    return new Promise(resolve => {
+  getCandidate(candidateId: string): Promise<Object> {
+    return new Promise((resolve, reject) => {
+      this.http.get(`${this.apiURL}/api/candidates/${candidateId}`, { headers: headers, responseType: 'json' }).subscribe(data => {
+        resolve(data);
+      }, err => {
+        reject(err);
+      });
+    });
+  }
+
+  getVotes(): Promise<Object> {
+    return new Promise((resolve, reject) => {
       this.http.get(`${this.apiURL}/api/votes`, { headers: headers, responseType: 'json' }).subscribe(data => {
         resolve(data);
       }, err => {
-        console.log(err);
+        reject(err);
       });
     });
   }
 
-  addVote(vote: {voter: string, voterId: string, candidate: string, voted_date?: Date}): Promise<any> {
+  addVote(vote: {candidateId: string, voted_date?: Date}): Promise<Object> {
     return new Promise((resolve, reject) => {
       this.http.post(`${this.apiURL}/api/votes`, JSON.stringify(vote), { headers: headers, responseType: 'json' })
         .subscribe(res => {
