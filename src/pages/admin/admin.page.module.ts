@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 
 import { AdminPage } from './admin.page';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ComponentsModule } from '../../components/components.module';
+import { QrcodeService } from '../../providers/qrcode/qrcode.service';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,7 @@ import { ComponentsModule } from '../../components/components.module';
     IonicPageModule.forChild(AdminPage)
   ],
   providers: [
-    BarcodeScanner
+    QrcodeService
   ]
 })
 export class AdminPageModule {}

@@ -11,6 +11,7 @@ import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../providers/auth/auth.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Environment } from '../models/environment.model';
 import { UserService } from '../providers/user/user.service';
 
@@ -46,6 +47,7 @@ const firebaseAppConfig: FirebaseAppConfig = {
     AngularFireAuth,
     AngularFireDatabase,
     AuthService,
+    BarcodeScanner,
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },

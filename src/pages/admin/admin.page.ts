@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { AlertController, IonicPage, NavController, NavParams, Platform } from 'ionic-angular';
+import { IonicPage, NavController, Platform } from 'ionic-angular';
+
+import { Observable } from 'rxjs';
 
 import { AuthService } from '../../providers/auth/auth.service';
-import { BarcodeScanResult, BarcodeScanner } from '@ionic-native/barcode-scanner';
-import { Observable } from 'rxjs';
+import { QrcodeService } from '../../providers/qrcode/qrcode.service';
 import { User } from '../../models/user.model';
 import { UserService } from '../../providers/user/user.service';
 
@@ -16,7 +17,6 @@ import { UserService } from '../../providers/user/user.service';
 
 export class AdminPage {
 
-  barcodeResult: BarcodeScanResult;
   users: Observable<User[]>;
 
   ionViewCanEnter(): Promise<boolean> {
@@ -28,12 +28,10 @@ export class AdminPage {
   }
 
   constructor(
-    public alertCtrl: AlertController,
     public authService: AuthService,
-    public barcodeScanner: BarcodeScanner,
     public navCtrl: NavController,
-    public navParams: NavParams,
     private platform: Platform,
+    public qrcode: QrcodeService,
     public userService: UserService
   ) {
       this.platform.registerBackButtonAction(() => {
@@ -42,39 +40,11 @@ export class AdminPage {
     }
 
   onGetBarcode(): void {
-    this.barcodeScanner.scan()
-      .then((barcodeResult: BarcodeScanResult) => {
-        this.barcodeResult = barcodeResult;
-        if(barcodeResult.cancelled == false) {
-          if(barcodeResult.format != "QR_CODE")
-            this.showAlert(`Error`, `Invalid Format`);
-          else {            
-            this.userService.findUser(barcodeResult.text)
-            .then((user) => {
-              if(user){
-                this.navCtrl.push('ScannedUserPage', user);
-              }
-            }).catch((err) => {
-              this.showAlert(`Error`, `Invalid user`);
-            });            
-          }
-
-        }
-      }).catch((err) => {      
-        console.log(err);
-      })
+    this.qrcode.scanAndFindUser();
   }
 
   onSelectUser(user) {
     console.log(user);
-  }
-
-  private showAlert(title: string, message: string): void {
-    this.alertCtrl.create({
-      title: title,
-      subTitle: message,
-      buttons: ['OK']
-    }).present();
   }
 
 }
