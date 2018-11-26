@@ -23,8 +23,12 @@
   </ion-item>
 
   <ion-item>
-    <ion-icon name="image" item-start></ion-icon>
-    <ion-input type="file" accept="image/*" (change)="onPhoto($event)"></ion-input>
+    <ion-icon name="image" item-left></ion-icon>
+    <button ion-button outline icon-start (click)="onActionSheet()">
+      <ion-icon name="cloud-upload"></ion-icon>
+      Profile Image
+    </button>
+    <ion-icon *ngIf="photoUri" name="checkmark" item-right></ion-icon>
   </ion-item>
 
   <progress-bar *ngIf="uploadProgress" [progress]="uploadProgress"></progress-bar>
