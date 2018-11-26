@@ -6,10 +6,10 @@ import { MyApp } from './app.component';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from '../providers/auth/auth.service';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Environment } from '../models/environment.model';
