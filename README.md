@@ -40,8 +40,8 @@ And add in src folder a env.ts file with your firebase credentials. ([See templa
 - [X] Presents the current votes
 
 ### Prod v1.4
-- [ ] Count the votes by candidate and date
-- [ ] Presents voting history every 15 days
+- [ ] ~~Count the votes by candidate and date~~
+- [ ] ~~Presents voting history every 15 days~~
 
 ## Contributing
 
