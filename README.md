@@ -1,3 +1,7 @@
+![GitHub package version](https://img.shields.io/github/package-json/v/ecjN00B/usjt-condominium-election.svg)
+![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/ecjn00b/usjt-condominium-election.svg)
+![Crates.io](https://img.shields.io/crates/l/rustc-serialize.svg)
+
 # Condominium Election App Project
 
 This is a condominium election app developed in a project of the University of São Judas Tadeu, whose objective is to make an election where electors can vote in candidates through the application.
